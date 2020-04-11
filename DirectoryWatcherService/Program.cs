@@ -36,8 +36,6 @@ namespace DirectoryWatcherService {
                 Log.Information("====================================================================\r\n");
                 Log.CloseAndFlush();
             }
-
-            //CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
