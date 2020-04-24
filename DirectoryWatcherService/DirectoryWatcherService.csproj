@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UserSecretsId>dotnet-DirectoryWatcherService-4E861AFE-6F0A-4301-B14B-E635907C5592</UserSecretsId>
+    <FileVersion>1.0.8.7419</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

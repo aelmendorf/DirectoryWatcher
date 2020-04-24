@@ -1,15 +1,23 @@
 ﻿using System;
 using System.IO;
+using System.Net;
+using System.Runtime.InteropServices;
 using System.Security.Permissions;
+using System.Security.Principal;
 using System.Threading;
 
 
 namespace DirectoryWatcherTestingConsole {
     public class Watcher {
-
         public static void Main(string[] args) {
-            DirectoryWatcher watcher = new DirectoryWatcher();
-            watcher.Run();
+            NetworkCredential credential = new NetworkCredential("AElmendo","Drizzle123!","seti.com");
+            CredentialCache theNetcache = new CredentialCache();
+            theNetcache.Add(new Uri(@"\\172.20.4.11\Data\Characterization Raw Data\PL Mapper"),"Basic",credential);
+
+            string[] theFolders = System.IO.Directory.GetDirectories(@"\\172.20.4.11\Data\Characterization Raw Data\PL Mapper");
+            foreach(var text in theFolders) {
+                Console.WriteLine(text);
+            }
         }
 
         public static void TestCopyFiles() {
@@ -54,7 +62,7 @@ namespace DirectoryWatcherTestingConsole {
             this._watcher = new FileSystemWatcher();
         }
 
-        [PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
+        //[PermissionSet(SecurityAction.Demand, Name = "FullTrust")]
         public void Run() {
             this.SetupWatcher();
             Console.WriteLine("Press q to quit");
